@@ -14,8 +14,10 @@
 		E600AF91204FD85B009EFBFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E600AF8F204FD85B009EFBFD /* LaunchScreen.storyboard */; };
 		E600AF94204FD85B009EFBFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E600AF93204FD85B009EFBFD /* main.m */; };
 		E600AF9C204FD886009EFBFD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E600AF9B204FD886009EFBFD /* AVFoundation.framework */; };
-		E61D9272205134710005E35A /* SUFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = E61D9271205134710005E35A /* SUFileHandle.m */; };
 		E65464F22050FF5C000FE999 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65464F12050FF5C000FE999 /* MobileCoreServices.framework */; };
+		E6B58A622056219F00ABC6F8 /* LAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B58A612056219F00ABC6F8 /* LAVPlayer.m */; };
+		E6B58A652056269500ABC6F8 /* LLoaderTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B58A642056269500ABC6F8 /* LLoaderTask.m */; };
+		E6B58A682056311000ABC6F8 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B58A662056311000ABC6F8 /* FileUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +32,13 @@
 		E600AF92204FD85B009EFBFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E600AF93204FD85B009EFBFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E600AF9B204FD886009EFBFD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E61D9270205134710005E35A /* SUFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUFileHandle.h; sourceTree = "<group>"; };
-		E61D9271205134710005E35A /* SUFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUFileHandle.m; sourceTree = "<group>"; };
 		E65464F12050FF5C000FE999 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E6B58A602056219F00ABC6F8 /* LAVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAVPlayer.h; sourceTree = "<group>"; };
+		E6B58A612056219F00ABC6F8 /* LAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAVPlayer.m; sourceTree = "<group>"; };
+		E6B58A632056269500ABC6F8 /* LLoaderTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLoaderTask.h; sourceTree = "<group>"; };
+		E6B58A642056269500ABC6F8 /* LLoaderTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLoaderTask.m; sourceTree = "<group>"; };
+		E6B58A662056311000ABC6F8 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
+		E6B58A672056311000ABC6F8 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +74,11 @@
 		E600AF83204FD85B009EFBFD /* avFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				E61D9270205134710005E35A /* SUFileHandle.h */,
-				E61D9271205134710005E35A /* SUFileHandle.m */,
-				E600AF84204FD85B009EFBFD /* AppDelegate.h */,
-				E600AF85204FD85B009EFBFD /* AppDelegate.m */,
+				E6B58A5F2056218B00ABC6F8 /* LAVPlayer */,
 				E600AF87204FD85B009EFBFD /* ViewController.h */,
 				E600AF88204FD85B009EFBFD /* ViewController.m */,
+				E600AF84204FD85B009EFBFD /* AppDelegate.h */,
+				E600AF85204FD85B009EFBFD /* AppDelegate.m */,
 				E600AF8A204FD85B009EFBFD /* Main.storyboard */,
 				E600AF8D204FD85B009EFBFD /* Assets.xcassets */,
 				E600AF8F204FD85B009EFBFD /* LaunchScreen.storyboard */,
@@ -91,6 +96,19 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		E6B58A5F2056218B00ABC6F8 /* LAVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E6B58A602056219F00ABC6F8 /* LAVPlayer.h */,
+				E6B58A612056219F00ABC6F8 /* LAVPlayer.m */,
+				E6B58A632056269500ABC6F8 /* LLoaderTask.h */,
+				E6B58A642056269500ABC6F8 /* LLoaderTask.m */,
+				E6B58A672056311000ABC6F8 /* FileUtils.h */,
+				E6B58A662056311000ABC6F8 /* FileUtils.m */,
+			);
+			path = LAVPlayer;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -163,9 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6B58A652056269500ABC6F8 /* LLoaderTask.m in Sources */,
 				E600AF89204FD85B009EFBFD /* ViewController.m in Sources */,
-				E61D9272205134710005E35A /* SUFileHandle.m in Sources */,
+				E6B58A682056311000ABC6F8 /* FileUtils.m in Sources */,
 				E600AF94204FD85B009EFBFD /* main.m in Sources */,
+				E6B58A622056219F00ABC6F8 /* LAVPlayer.m in Sources */,
 				E600AF86204FD85B009EFBFD /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

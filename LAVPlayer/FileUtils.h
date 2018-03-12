@@ -8,24 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SUFileHandle : NSObject
+@interface FileUtils : NSObject
 
-/**
- *  创建临时文件
- */
+
 + (BOOL)createTempFile;
-+ (BOOL)reCreateTempFile;
 
-/**
- *  往临时文件写入数据
- */
++ (BOOL)removeTempFile;
+
++ (BOOL)tempFileCompleteWithFileName:(NSString*)strURL;
+
 + (void)writeTempFileData:(NSData *)data;
 
-/**
- *  读取临时文件数据
- */
+
 + (NSData *)readTempFileDataWithOffset:(NSUInteger)offset length:(NSUInteger)length;
 
 + (NSInteger)tmpFileLength;
+
++(NSURL*)localURLFromRemoteURL:(NSString *)strURL;
+
 
 @end
