@@ -13,4 +13,7 @@
 
 - (LAVPlayer*)initWithURLString:(NSString*)urlString;
 
+- (void)playWith:(NSString*)urlString;
+
+
 @end

@@ -35,10 +35,11 @@
     // Do any additional setup after loading the view, typically from a nib.
      
      
-    self.avPlayer = [[LAVPlayer alloc] initWithURLString:VIDEOURL2];
+    self.avPlayer = [[LAVPlayer alloc] init];
     self.avPlayer.playerLayer.frame = CGRectMake(0, 0, self.view.bounds.size.width, 300);
     [self.view.layer addSublayer:self.avPlayer.playerLayer];
-    
+     [self.avPlayer playWith:VIDEOURL2];
+     
      [self.avPlayer.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
      __weak typeof(self) weakSelf = self;
      [self.avPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 30) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {

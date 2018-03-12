@@ -25,32 +25,46 @@
 
 @implementation LAVPlayer
 
-- (LAVPlayer*)initWithURLString:(NSString*)urlString
+- (LAVPlayer*)init
 {
     self = [super init];
     if(self){
-        self.mIsSeeking = NO;
-        self.mRequests = [NSMutableArray array];
-        NSURL *localURL = [FileUtils localURLFromRemoteURL:urlString];
-        if(localURL){//有缓存文件
-            AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:localURL options:nil];
-            AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
-            self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self];
-            [self replaceCurrentItemWithPlayerItem:item];
-        }else{//没有存文件
-            NSURL *url = [NSURL URLWithString:urlString];
-            NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
-            components.scheme = kCustomVideoScheme;
-            AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:components.URL options:nil];
-            [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
-            AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
-            self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self];
-            [self replaceCurrentItemWithPlayerItem:item];
-        }
+        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self];
     }
     
     return self;
 }
+- (LAVPlayer*)initWithURLString:(NSString*)urlString
+{
+    self = [super init];
+    if(self){
+        [self playWith:urlString];
+    }
+    
+    return self;
+}
+
+- (void)playWith:(NSString*)urlString
+{
+   
+    self.mIsSeeking = NO;
+    self.mRequests = [NSMutableArray array];
+    NSURL *localURL = [FileUtils localURLFromRemoteURL:urlString];
+    if(localURL){//有缓存文件
+        AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:localURL options:nil];
+        AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
+        [self replaceCurrentItemWithPlayerItem:item];
+    }else{//没有存文件
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+        components.scheme = kCustomVideoScheme;
+        AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:components.URL options:nil];
+        [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
+        AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
+        [self replaceCurrentItemWithPlayerItem:item];
+    }
+}
+
 
 -(void)startDownLoad:(AVAssetResourceLoadingRequest *)loadingRequest
 {
